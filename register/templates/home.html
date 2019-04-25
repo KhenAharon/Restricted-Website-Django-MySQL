@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
 
 {% block content %}
-home! {{ users.username }}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="container-fluid ">
+            <br>
+            Welcome, {{ users.username }}!
+           <img src='{% static "cat.png" %}' class="img-thumbnail img-fluid"/>
+        </div>
+    </div>
+    <div class="col-sm-8">
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 {% block title %} home title {% endblock %}
