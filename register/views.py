@@ -11,6 +11,13 @@ from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 
 
+def login_success(request):
+    if request.user.profile.login_counter == 0:
+        return redirect("change_password")
+    else:
+        return redirect("home")
+
+
 def home(request):
     if request.user.is_authenticated:
         context = {
