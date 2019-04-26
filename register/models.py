@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
@@ -11,12 +10,13 @@ class RegisterUser(models.Model):
     last_name = models.CharField(max_length=20)
     email = models.CharField(max_length=50)
     username = models.CharField(max_length=20)
-    admin = False
     date_registered = models.DateTimeField(default=timezone.now)  # auto_now_add=True
+    login_count = models.IntegerField(default=0)
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    login_counter = models.IntegerField(default=0)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):

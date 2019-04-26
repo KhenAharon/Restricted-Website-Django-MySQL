@@ -10,6 +10,10 @@
         <div class="container-fluid ">
             <br>
             Welcome, {{ user }}!
+            <br>
+                {% ifequal login_count 0 %}
+                        hello 0!
+                {% endifequal %}
            <img src='{% static "cat.png" %}' class="img-thumbnail img-fluid"/>
         </div>
     </div>

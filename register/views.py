@@ -5,13 +5,23 @@ from .forms import UserRegisterForm, UserUpdateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth import views as auth_views
+from django.http import HttpResponse
 
 
 def home(request):
-    context = {
-        'users': User.objects.all().first()
-    }
+    if request.user.is_authenticated:
+        context = {
+            'users': User.objects.all().first(),
+            'login_count': User.objects.filter(username=request.user).first().profile.login_counter
+        }
+    else:
+        context = {
+            'users': User.objects.all().first(),
+            'login_count': 'unsigned'
+        }
     return render(request, "home.html", context)
 
 
