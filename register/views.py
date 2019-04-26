@@ -9,10 +9,13 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
+from .models import User, Profile
 
 
 def login_success(request):
     if request.user.profile.login_counter == 0:
+        request.user.profile.login_counter += 1
+        request.user.save()
         return redirect("change_password")
     else:
         return redirect("home")
