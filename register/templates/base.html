@@ -22,22 +22,27 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
           </li>
+          {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'about' %}">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+          {% endif %}
         </ul>
       </div>
   </nav>
     <main role="main" class="container">
       <div class="row">
         <div class="col-sm-4">
-
           {% if messages %}
             {% for message in messages %}
               <div class="alert alert-{{ message.tags }}">
@@ -47,10 +52,14 @@
           {% endif %}
         </div>
       </div>
-      <div class="row">
-        {% block content %}{% endblock %}
-      </div>
+      
     </main>
+		<div class="row">
+				{% block unstyled_content %} {% endblock %}
+        <div class="col-sm-4" style="padding-left: 80px; padding-top: 30px;">
+        	    {% block content %}{% endblock %}
+        </div>
+      </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

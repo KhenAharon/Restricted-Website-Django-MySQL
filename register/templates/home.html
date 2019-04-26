@@ -2,14 +2,14 @@
 {% load staticfiles %}
 
 
-{% block content %}
+{% block unstyled_content %}
 
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
         <div class="container-fluid ">
             <br>
-            Welcome, {{ users.username }}!
+            Welcome, {{ user }}!
            <img src='{% static "cat.png" %}' class="img-thumbnail img-fluid"/>
         </div>
     </div>
