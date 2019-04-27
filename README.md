@@ -36,13 +36,42 @@ Anyway, a user can reset its password by adding '/change-password' to the root p
 ```
 Clauses 2-4 are performed in the admin area.
 
-# Running the server using the virtualenv:
+# Global Dependencies:
 ```
+sudo apt-get install virtualenv
+sudo apt-get install python3-pip
+sudo apt-get install default-libmysqlclient-dev
 sudo apt-get install mysql-server
+sudo apt-get install python3-dev
+sudo apt-get install python-dev
+sudo apt-get install python-django-common
+```
+
+# Virtual Env:
+Run:
+```
+virtualenv your_virtual_env_name
+source bin/activate
+pip3 install -r requirements.txt
+```
+It will automatically install inside your virtual environment these libraries:
+```
+pip install setuptools
+pip3 install setuptools
+pip install mysqlclient
+pip install mysql-python
+pip install django
+pip3 install django-crispy-forms
+pip install Pillow
+```
+
+# Run The Django Server
+```
 sudo mysql -u root
 >> create database mydb;
 
-source bin/activate
+sudo python3 manage.py makemigrations
+sudo python3 manage.py migrate
 sudo python3 manage.py runserver
 ```
 browse to http://localhost:8000
@@ -50,19 +79,6 @@ browse to http://localhost:8000
 ## Create an admin:
 ```
 sudo python3 manage.py createsuperuser
-```
-
-## Building from scratch:
-```
-sudo apt-get install mysql-server
-sudo mysql -u root
->> create database mydb;
-
-pip install django
-pip install mysqlclient
-pip install mysql-python
-pip install django-crispy-forms
-pip install Pillow
 ```
 
 ## Topics included:

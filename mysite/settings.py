@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     'register.apps.RegisterConfig',
-    'crispy_forms',  # pip install django-crispy-forms
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
