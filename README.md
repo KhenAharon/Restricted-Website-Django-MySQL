@@ -68,6 +68,7 @@ pip3 install Pillow
 ```
 sudo mysql -u root
 >> create database mydb;
+>> exit;
 
 sudo python3 manage.py makemigrations
 sudo python3 manage.py migrate
