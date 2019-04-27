@@ -51,8 +51,8 @@ sudo apt-get install python-django-common
 Run:
 ```
 virtualenv your_virtual_env_name
-source bin/activate
-pip3 install -r requirements.txt
+source your_virtual_env_name/bin/activate
+pip3 install -r require3.txt
 ```
 It will automatically install inside your virtual environment these libraries:
 ```
