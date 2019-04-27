@@ -45,6 +45,7 @@ sudo apt-get install mysql-server
 sudo apt-get install python3-dev
 sudo apt-get install python-dev
 sudo apt-get install python-django-common
+pip3 install setuptools
 ```
 
 # Virtual Env:
