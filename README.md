@@ -67,10 +67,11 @@ pip install Pillow
 ```
 Django
 MVC
-Relational database, MySQL database
+Relational database
+MySQL database
 MySQL shell server
-db migrations
 Object-relational mapping (ORM)
+db migrations
 Restricted pages
 Secure Authentication
 Virtualenv
