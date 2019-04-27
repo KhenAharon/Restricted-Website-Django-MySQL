@@ -36,24 +36,22 @@ Clauses 2-4 are performed in the admin area.
 
 # Running the server using the virtualenv:
 ```
-1. a mysql database called 'mydb' is required:
-   sudo apt-get install mysql-server
-   sudo mysql -u root
+sudo apt-get install mysql-server
+sudo mysql -u root
 >> create database mydb;
 
-2. run the virtualenv:
-   source bin/activate
-
-3. sudo python3 manage.py runserver
+source bin/activate
+sudo python3 manage.py runserver
 ```
 browse to http://localhost:8000
 
-# Creating an admin:
-at django project directory:
+## Create an admin:
+```
 sudo python3 manage.py createsuperuser
-(for entering the /admin area of the site we have to create a superuser)
+```
 
 ## Building from scratch:
+```
 sudo apt-get install mysql-server
 sudo mysql -u root
 >> create database mydb;
@@ -63,8 +61,10 @@ pip install mysqlclient
 pip install mysql-python
 pip install django-crispy-forms
 pip install Pillow
+```
 
 ## Topics included:
+```
 Django
 MVC
 Relational database, MySQL database
@@ -74,9 +74,11 @@ Object-relational mapping (ORM)
 Restricted pages
 Secure Authentication
 Virtualenv
-
+```
 ## Related Topics (parallel technologies):
+```
 Docker
 Irrelational databases
 phpMyAdmin
 Apache server
+```
