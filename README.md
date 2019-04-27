@@ -51,24 +51,24 @@ sudo apt-get install python-django-common
 Run:
 ```
 virtualenv your_virtual_env_name
-source bin/activate
-pip3 install -r requirements.txt
-```
-It will automatically install inside your virtual environment these libraries:
-```
-pip install setuptools
-pip3 install setuptools
-pip install mysqlclient
+source your_virtual_env_name/bin/activate
+pip3 install -r require3.txt
 pip install mysql-python
-pip install django
+```
+the pip3 command will automatically install inside your virtual environment these libraries:
+```
+pip3 install setuptools
+pip3 install mysqlclient
+pip3 install django
 pip3 install django-crispy-forms
-pip install Pillow
+pip3 install Pillow
 ```
 
 # Run The Django Server
 ```
 sudo mysql -u root
 >> create database mydb;
+>> exit;
 
 sudo python3 manage.py makemigrations
 sudo python3 manage.py migrate
