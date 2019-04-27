@@ -76,7 +76,7 @@ sudo python3 manage.py runserver
 ```
 browse to http://localhost:8000
 
-## Create an admin:
+## Create an admin (first admin through terminal):
 ```
 sudo python3 manage.py createsuperuser
 ```
