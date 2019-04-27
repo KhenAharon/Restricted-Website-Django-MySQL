@@ -1,7 +1,7 @@
-#Restricted Website
+# Restricted Website
 This is a restricted website written in Python and MySQL.
 
-###The web site includes:
+### The web site includes:
 ```
 1. Welcome page
 2. Login page
@@ -9,7 +9,7 @@ This is a restricted website written in Python and MySQL.
 4. Admin area (to access, add ‘/admin’ to the default route, e.g. ‘localhost/admin’.)
 ```
 
-###User attribute includes:
+### User attribute includes:
 ```
 1. First name
 2. Last name
@@ -18,14 +18,14 @@ This is a restricted website written in Python and MySQL.
 5. Admin yes/no
 ```
 
-###Standard Users is be able to: 
+### Standard Users is be able to: 
 ```
 1. Authenticate and see welcome page (Just login and you will be redirected to your welcome page.)
 2. Edit own properties (By the profile page after logging in.)
 3. Set their password on the first login (First login is verified by a MySQL database.)
 ```
 
-###Admin is able to:
+### Admin is able to:
 ```
 1. Do the same as standard users.
 2. Edit other users properties.
