@@ -6,7 +6,7 @@ This is a restricted website written in Python and MySQL.
 Welcome page
 Login page
 Registration page
-Admin area (to access, add ‘/admin’ to the default route, e.g. ‘localhost/admin’.)
+Admin area (to access, add ‘/admin’ to the default route, e.g. 'localhost:8000/admin’.)
 ```
 
 ### User attribute includes:
@@ -34,7 +34,7 @@ Anyway, a user can reset its password by adding '/change-password' to the root p
 3. Make other user admin.
 4. Reset user passwords.
 ```
-Clauses 2-4 are performed in the admin area.
+Clauses 2-4 are performed in the admin area (e.g. 'localhost:8000/admin').
 
 # Global Dependencies:
 ```
@@ -55,7 +55,7 @@ source your_virtual_env_name/bin/activate
 pip3 install -r require3.txt
 pip install mysql-python
 ```
-the pip3 command will automatically install inside your virtual environment these libraries:
+the above pip3 command will automatically install inside your virtual environment these libraries:
 ```
 pip3 install setuptools
 pip3 install mysqlclient
