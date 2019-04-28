@@ -9,7 +9,7 @@ Registration page
 Admin area (to access, add ‘/admin’ to the default route, e.g. 'localhost:8000/admin’.)
 ```
 
-### User attribute includes:
+### User attributes include:
 ```
 First name
 Last name
@@ -18,7 +18,7 @@ Username
 Admin yes/no
 ```
 
-### Standard Users is be able to: 
+### Standard Users are able to: 
 ```
 1. Authenticate and see welcome page (Just login and you will be redirected to your welcome page.)
 2. Edit own properties (Edit the profile after logging in.)
@@ -94,6 +94,7 @@ db migrations
 Restricted pages
 Secure Authentication
 Virtualenv
+Bootstrap
 ```
 ## Related Topics (parallel technologies):
 ```
