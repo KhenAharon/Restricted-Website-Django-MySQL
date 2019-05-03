@@ -6,10 +6,10 @@ This is a restricted website written in Python and MySQL.
 Welcome page
 Login page
 Registration page
-Admin area (to access, add ‘/admin’ to the default route, e.g. ‘localhost/admin’.)
+Admin area (to access, add ‘/admin’ to the default route, e.g. 'localhost:8000/admin’.)
 ```
 
-### User attribute includes:
+### User attributes include:
 ```
 First name
 Last name
@@ -18,7 +18,7 @@ Username
 Admin yes/no
 ```
 
-### Standard Users is be able to: 
+### Standard Users are able to: 
 ```
 1. Authenticate and see welcome page (Just login and you will be redirected to your welcome page.)
 2. Edit own properties (Edit the profile after logging in.)
@@ -34,7 +34,7 @@ Anyway, a user can reset its password by adding '/change-password' to the root p
 3. Make other user admin.
 4. Reset user passwords.
 ```
-Clauses 2-4 are performed in the admin area.
+Clauses 2-4 are performed in the admin area (e.g. 'localhost:8000/admin').
 
 # Global Dependencies:
 ```
@@ -55,7 +55,7 @@ source your_virtual_env_name/bin/activate
 pip3 install -r require3.txt
 pip install mysql-python
 ```
-the pip3 command will automatically install inside your virtual environment these libraries:
+the above pip3 command will automatically install inside your virtual environment these libraries:
 ```
 pip3 install setuptools
 pip3 install mysqlclient
@@ -76,7 +76,8 @@ sudo python3 manage.py runserver
 ```
 browse to http://localhost:8000
 
-## Create an admin:
+## Create an admin
+first admin through terminal:
 ```
 sudo python3 manage.py createsuperuser
 ```
@@ -93,6 +94,7 @@ db migrations
 Restricted pages
 Secure Authentication
 Virtualenv
+Bootstrap
 ```
 ## Related Topics (parallel technologies):
 ```
