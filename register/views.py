@@ -1,10 +1,10 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm, PasswordReset
+from .forms import UserRegisterForm, UserUpdateForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import PasswordChangeForm, SetPasswordForm
 
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import views as auth_views
@@ -77,18 +77,16 @@ def password_reset(request, id=0):
     user_to_update = user_to_update[0]  # there is only one such id, the user is in first index.
 
     if request.method == 'POST':
-
-        form = PasswordChangeForm(user_to_update, request.POST)
+        form = SetPasswordForm(user_to_update, request.POST)
         if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important for encryption!
-            messages.success(request, 'The password was successfully reset!')
+            form.save()
+            messages.success(request, 'The password was reset!')
             return redirect('myadmin')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
-        form = PasswordChangeForm(user_to_update)
-    return render(request, 'change_password.html', {'form': form})
+        form = SetPasswordForm(user=user_to_update)
+    return render(request, 'reset_password.html', {'p_form': form})
 
 
 @user_passes_test(lambda u: u.is_superuser)
