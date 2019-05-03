@@ -10,6 +10,10 @@
         <div class="container-fluid ">
             <br>
             Welcome, {{ user }}!
+
+            {% if user.is_superuser is True %}
+                <br><strong>You're admin!</strong>
+            {% endif %}
             <br>
                 {% ifequal login_count 0 %}
                         hello! it's your first login.

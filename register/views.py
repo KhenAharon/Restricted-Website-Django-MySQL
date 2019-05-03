@@ -10,6 +10,17 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import views as auth_views
 from django.http import HttpResponse
 from .models import User, Profile
+from django.contrib.auth.decorators import user_passes_test
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="khen",
+  database="mydb",
+  passwd="khen"
+)
+
+mycursor = mydb.cursor()
 
 
 def login_success(request):
@@ -37,6 +48,85 @@ def home(request):
 
 def about(request):
     return render(request, "about.html", {})
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def edit_user2(request, id=0):
+    user_to_update = User.objects.filter(id=id).first()
+
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=user_to_update)
+        if u_form.is_valid():
+            u_form.save()
+            messages.success(request, f'This user has been updated!')
+            return redirect('myadmin')
+    else:
+        u_form = UserUpdateForm(instance=user_to_update)
+
+    context = {
+        "id": id,
+        'u_form': u_form
+    }
+
+    return render(request, "edituser.html", context)
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def edit_user(request, id=0):
+    user_to_update = User.objects.raw('SELECT * FROM auth_user WHERE id=' + str(id))
+    user_to_update = user_to_update[0]  # there is only one such id, the user is in first index.
+
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=user_to_update)
+
+        # updating the form by the POST method by the user.
+        if u_form.is_valid():
+            first_name = request.POST.get('first_name', '')
+            last_name = request.POST.get('first_name', '')
+            username = request.POST.get('first_name', '')
+            email = request.POST.get('first_name', '')
+            admin = request.POST.get('first_name', '')
+
+            sql = "UPDATE auth_user SET first_name ='" + first_name + "'  WHERE id=" + str(id)
+            mycursor.execute(sql)
+            mydb.commit()
+
+            messages.success(request, f'This user has been updated!')
+            return redirect('myadmin')
+    else:
+        # updating the view form, filling user fields from the db.
+        u_form = UserUpdateForm(instance=user_to_update)
+
+    context = {
+        "id": id,
+        'u_form': u_form
+    }
+
+    return render(request, "edituser.html", context)
+
+
+'''
+The decorator above with the lambda expression is equivalent to:
+def my_view(request):
+    if not request.user.is_superuser:
+         return HttpResponse(status=403)  # HTTP 403 Forbidden 
+'''
+
+
+@user_passes_test(lambda u: u.is_superuser)
+def myadmin(request):
+    my_users = []
+    for user in User.objects.raw('SELECT * FROM auth_user'):
+        my_users.append({
+            'username': user.username,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'email': user.email,
+            'password': user.password,
+            'is_superuser': user.is_superuser,
+            'id': int(user.id)
+        })
+    return render(request, "myadmin.html", {"my_users": my_users})
 
 
 def register(request):
