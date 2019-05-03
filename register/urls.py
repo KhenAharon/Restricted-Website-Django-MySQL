@@ -14,5 +14,6 @@ urlpatterns = [
     path('login-success/', views.login_success, name='login_success'),
     path('myadmin/', views.myadmin, name='myadmin'),
     path('edit-user/<int:id>/', views.edit_user, name='edit_user'),
+    path('password-reset/<int:id>/', views.password_reset, name='password_reset'),
 
 ]

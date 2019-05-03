@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm, UserUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, PasswordReset
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -72,6 +72,26 @@ def edit_user2(request, id=0):
 
 
 @user_passes_test(lambda u: u.is_superuser)
+def password_reset(request, id=0):
+    user_to_update = User.objects.raw('SELECT * FROM auth_user WHERE id=' + str(id))
+    user_to_update = user_to_update[0]  # there is only one such id, the user is in first index.
+
+    if request.method == 'POST':
+
+        form = PasswordChangeForm(user_to_update, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important for encryption!
+            messages.success(request, 'The password was successfully reset!')
+            return redirect('myadmin')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(user_to_update)
+    return render(request, 'change_password.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_superuser)
 def edit_user(request, id=0):
     user_to_update = User.objects.raw('SELECT * FROM auth_user WHERE id=' + str(id))
     user_to_update = user_to_update[0]  # there is only one such id, the user is in first index.
@@ -82,12 +102,23 @@ def edit_user(request, id=0):
         # updating the form by the POST method by the user.
         if u_form.is_valid():
             first_name = request.POST.get('first_name', '')
-            last_name = request.POST.get('first_name', '')
-            username = request.POST.get('first_name', '')
-            email = request.POST.get('first_name', '')
-            admin = request.POST.get('first_name', '')
+            last_name = request.POST.get('last_name', '')
+            username = request.POST.get('username', '')
+            email = request.POST.get('email', '')
+            admin = request.POST.get('is_superuser', '')
 
-            sql = "UPDATE auth_user SET first_name ='" + first_name + "'  WHERE id=" + str(id)
+            if admin:
+                admin = 1
+            else:
+                admin = 0
+
+            sql = "UPDATE auth_user SET first_name ='" + first_name + "'," \
+                  + "first_name ='" + first_name + "'," \
+                  + "last_name ='" + last_name + "'," \
+                  + "username ='" + username + "'," \
+                  + "email ='" + email + "'," \
+                  + "is_superuser ='" + str(admin) + "' " \
+                  + "WHERE id=" + str(id)
             mycursor.execute(sql)
             mydb.commit()
 
