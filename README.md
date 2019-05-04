@@ -52,16 +52,18 @@ Run:
 ```
 virtualenv your_virtual_env_name
 source your_virtual_env_name/bin/activate
-pip3 install -r require3.txt
+pip3 install -r requirement3.txt
 pip install mysql-python
 ```
-the above pip3 command will automatically install inside your virtual environment these libraries:
+Following are equivalent commands for the above pip3 command.
+The above pip3 command will automatically install inside your virtual environment these libraries:
 ```
 pip3 install setuptools
-pip3 install mysqlclient
 pip3 install django
 pip3 install django-crispy-forms
 pip3 install Pillow
+pip3 install wheel
+pip3 install mysqlclient
 pip3 install mysql-connector
 ```
 
@@ -72,7 +74,6 @@ sudo mysql -u root
 >> grant all privileges on *.* to 'khen'@'localhost' identified by 'khen';
 >> exit;
 
-sudo python3 manage.py makemigrations
 sudo python3 manage.py migrate
 sudo python3 manage.py runserver
 ```
@@ -89,8 +90,7 @@ sudo python3 manage.py createsuperuser
 Django
 MVC
 Relational database
-MySQL database
-MySQL shell server
+MySQL
 Object-relational mapping (ORM)
 db migrations
 Restricted pages
