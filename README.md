@@ -52,7 +52,7 @@ Run:
 ```
 virtualenv your_virtual_env_name
 source your_virtual_env_name/bin/activate
-pip3 install -r requirement3.txt
+pip3 install -r require3.txt
 pip install mysql-python
 ```
 Following are equivalent commands for the above pip3 command.
