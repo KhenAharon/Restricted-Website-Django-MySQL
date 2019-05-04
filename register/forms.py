@@ -9,7 +9,6 @@ class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
     first_name = forms.CharField()
     last_name = forms.CharField()
-    is_superuser = forms.BooleanField(initial=False)
 
     class Meta:
         model = User
