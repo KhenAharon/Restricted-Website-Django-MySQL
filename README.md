@@ -52,17 +52,17 @@ Run:
 ```
 virtualenv your_virtual_env_name
 source your_virtual_env_name/bin/activate
-pip3 install -r require3.txt
 pip install mysql-python
+pip3 install setuptools
+pip3 install wheel
+pip3 install -r require3.txt
 ```
 Following are equivalent commands for the above pip3 command.
 The above pip3 command will automatically install inside your virtual environment these libraries:
 ```
-pip3 install setuptools
 pip3 install django
 pip3 install django-crispy-forms
 pip3 install Pillow
-pip3 install wheel
 pip3 install mysqlclient
 pip3 install mysql-connector
 ```
