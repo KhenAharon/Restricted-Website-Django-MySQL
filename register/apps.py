@@ -6,4 +6,5 @@ class RegisterConfig(AppConfig):
     name = 'register'
 
     def ready(self):
+        # we make signals active
         import register.signals

@@ -62,12 +62,14 @@ pip3 install mysqlclient
 pip3 install django
 pip3 install django-crispy-forms
 pip3 install Pillow
+pip3 install mysql-connector
 ```
 
 # Run The Django Server
 ```
 sudo mysql -u root
 >> create database mydb;
+>> grant all privileges on *.* to 'khen'@'localhost' identified by 'khen';
 >> exit;
 
 sudo python3 manage.py makemigrations

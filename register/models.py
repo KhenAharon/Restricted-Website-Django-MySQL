@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+# these are models to use for sql-migrations of django.
 class RegisterUser(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
