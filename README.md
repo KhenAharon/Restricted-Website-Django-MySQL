@@ -6,7 +6,7 @@ This is a restricted website written in Python and MySQL.
 Welcome page
 Login page
 Registration page
-Admin area (to access, add ‘/admin’ to the default route, e.g. 'localhost:8000/admin’.)
+Admin area
 ```
 
 ### User attributes include:
@@ -34,7 +34,6 @@ Anyway, a user can reset its password by adding '/change-password' to the root p
 3. Make other user admin.
 4. Reset user passwords.
 ```
-Clauses 2-4 are performed in the admin area (e.g. 'localhost:8000/admin').
 
 # Global Dependencies:
 ```
